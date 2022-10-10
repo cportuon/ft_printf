@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cportuon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cportuon <cportuon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 08:52:08 by cportuon          #+#    #+#             */
-/*   Updated: 2022/10/06 08:21:11 by cportuon         ###   ########.fr       */
+/*   Updated: 2022/10/10 09:31:55 by cportuon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-#include <stdarg.h>
-#include <unistd.h>
+# include<stdarg.h>
+# include<unistd.h>
 
-int	ft_putchar(char c);
+void	ft_putchar(char c);
 
 #endif
