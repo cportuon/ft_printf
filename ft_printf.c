@@ -6,34 +6,36 @@
 /*   By: cportuon <cportuon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 09:31:12 by cportuon          #+#    #+#             */
-/*   Updated: 2022/10/10 09:32:39 by cportuon         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:23:26 by cportuon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libftprintf.h"
 
-void	ft_print_c(char c)
+staticint	ft_console()
 {
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	
 }
 
-void	ft_print_str(char *str)
+int	ft_printf(char const *str, ...)
 {
-	unsigned int	i;
+	va_list	variadica;
+	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	va_start(variadica, str);
+	while (str)
 	{
-		write(1, &str[i], 1);
-		i++;
+		ft_putchar(&str);
+		if (str[i] == '%')
+		{
+			
+		}
 	}
-	write(1, "\n", 1);
 }
 
 int	main(void)
 {
-	ft_print_c('g');
-	ft_print_str("Hello world");
+
 	return (0);
 }
