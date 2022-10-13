@@ -12,14 +12,20 @@
 
 #include "libftprintf.h"
 
-int	ft_putstr(char *str)
+int	ft_putstr(char *str, int len)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!str)
 	{
-		write(1, &str[i], 1);
+		ft_putstr("(NULL)", len);
+		return (6);
+	}
+	while (str[i])
+	{
+		ft_putchar(&str[i], len);
 		i++;
 	}
+	return (len);
 }

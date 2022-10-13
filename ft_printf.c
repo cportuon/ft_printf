@@ -12,18 +12,18 @@
 
 #include "libftprintf.h"
 
-static int	ft_console(va_list ptr, const char *str)
+static int	ft_console(va_list ptr, const char *str, int len)
 {
 	if (str == 'c')
-		ft_putchar(va_arg(ptr, char));
+		ft_putchar(va_arg(ptr, char), len);
 	else if (str == 's')
-		ft_putstr();
+		ft_putstr(va_arg(ptr, char *), len);
 	else if (str == 'p')
 
 	else if (str == 'd')
-
+		ft_putnbr(va_arg(ptr, int), len);
 	else if (str == 'i')
-
+		ft_putnbr(va_arg(ptr, int), len);
 	else if (str == 'u')
 
 	else if (str == 'x')
@@ -31,6 +31,8 @@ static int	ft_console(va_list ptr, const char *str)
 	else if (str == 'X')
 
 	else (str == '%')
+
+	return (len);
 }
 
 int	ft_printf(char const *str, ...)
@@ -44,15 +46,14 @@ int	ft_printf(char const *str, ...)
 	va_start(ptr, str);
 	while (str[i])
 	{
-		ft_putchar(&str[i]);
+		ft_putchar(&str[i], len);
 		if (str[i] == '%')
-		{
-			ft_console(ptr, &str[i + 1]);
-		}
+			ft_console(ptr, &str[i + 1], len);	
+		len++;
 		i++;
 	}
 	va_end(ptr);
-	return (len)
+	return (len);
 }
 
 int	main(void)
