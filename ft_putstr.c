@@ -12,19 +12,19 @@
 
 #include "libftprintf.h"
 
-int	ft_putstr(char *str, int len)
+int	ft_putstr(char *arg, int len)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
+	if (!arg)
 	{
 		ft_putstr("(NULL)", len);
 		return (6);
 	}
-	while (str[i])
+	while (arg[i])
 	{
-		ft_putchar(&str[i], len);
+		ft_putchar(&arg[i], len);
 		i++;
 	}
 	return (len);

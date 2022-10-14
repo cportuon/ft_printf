@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static int	ft_console(va_list ptr, const char *str, int len)
+int	ft_console(va_list ptr, const char *str, int len)
 {
 	if (str == 'c')
 		ft_putchar(va_arg(ptr, char), len);
@@ -25,11 +25,11 @@ static int	ft_console(va_list ptr, const char *str, int len)
 	else if (str == 'i')
 		ft_putnbr(va_arg(ptr, int), len);
 	else if (str == 'u')
-
+		ft_putnbru(va_arg(ptr, unsigned int), len);
 	else if (str == 'x')
-
+		ft_puthexa(va_arg(ptr, int), str, len);
 	else if (str == 'X')
-
+		ft_puthexa(va_arg(ptr, int), str, len);
 	else (str == '%')
 
 	return (len);

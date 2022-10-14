@@ -10,4 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libftprintf.h"
 
+int ft_puthexa(int arg, char str, int len)
+{
+    if (str == 'x')
+    {
+        if (arg >= 16)
+            len = len + ft_puthexa(arg / 16, str, len);
+    }
+    if (str == 'X')
+    {
+
+    }
+}

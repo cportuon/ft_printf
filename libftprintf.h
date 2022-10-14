@@ -16,7 +16,10 @@
 # include<stdarg.h>
 # include<unistd.h>
 
-int ft_putchar(char c, int len);
-int ft_putstr(char *str, int len);
+int ft_putchar(char arg, int len);
+int ft_putstr(char *arg, int len);
+int ft_puthexa(int arg, char str, int len);
+int	ft_putnbr(int arg, int len);
+int ft_putnbru(unsigned int arg, int len);
 
 #endif
