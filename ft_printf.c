@@ -6,32 +6,31 @@
 /*   By: cportuon <cportuon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 09:31:12 by cportuon          #+#    #+#             */
-/*   Updated: 2022/10/11 12:23:26 by cportuon         ###   ########.fr       */
+/*   Updated: 2022/10/17 12:46:42 by cportuon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_console(va_list ptr, const char *str, int len)
+int	ft_console(va_list ptr, const char str, int len)
 {
 	if (str == 'c')
-		ft_putchar(va_arg(ptr, char), len);
+		len = ft_putchar(va_arg(ptr, int), len);
 	else if (str == 's')
-		ft_putstr(va_arg(ptr, char *), len);
-	else if (str == 'p')
-
-	else if (str == 'd')
-		ft_putnbr(va_arg(ptr, int), len);
-	else if (str == 'i')
-		ft_putnbr(va_arg(ptr, int), len);
+		len = ft_putstr(va_arg(ptr, char *), len);
+	else if (str == 'd' || str == 'i')
+		len = ft_putnbr(va_arg(ptr, int), len);
 	else if (str == 'u')
-		ft_putnbru(va_arg(ptr, unsigned int), len);
-	else if (str == 'x')
-		ft_puthexa(va_arg(ptr, int), str, len);
-	else if (str == 'X')
-		ft_puthexa(va_arg(ptr, int), str, len);
-	else (str == '%')
-
+		len = ft_putnbru(va_arg(ptr, unsigned int), len);
+	else if (str == 'x' || str == 'X')
+		len = ft_puthexa(va_arg(ptr, unsigned int), str, len);
+	else if (str == 'p')
+	{
+		len = ft_putstr("0x", len);
+		len = ft_puthexa(va_arg(ptr, size_t), str, len);
+	}
+	else if (str == '%')
+		len = ft_putchar('%', len);
 	return (len);
 }
 
@@ -46,18 +45,28 @@ int	ft_printf(char const *str, ...)
 	va_start(ptr, str);
 	while (str[i])
 	{
-		ft_putchar(&str[i], len);
+		if (str[i] != '%')
+		{
+			ft_putchar(str[i], len);
+			len++;
+		}
 		if (str[i] == '%')
-			ft_console(ptr, &str[i + 1], len);	
-		len++;
+			len = ft_console(ptr, str[++i], len);
 		i++;
 	}
 	va_end(ptr);
 	return (len);
 }
 
-int	main(void)
+/* int	main(void)
 {
+	int		*num;
+	int		i;
+	int		j;
 
+	num = &i;
+	i = printf(" c: %p\n", num);
+	j = ft_printf("ft: %p\n", num);
+	printf(" c: %d\nft: %d\n", i, j);
 	return (0);
-}
+} */

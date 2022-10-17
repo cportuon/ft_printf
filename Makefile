@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cportuon <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: cportuon <cportuon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 08:56:41 by cportuon          #+#    #+#              #
-#    Updated: 2022/10/05 11:31:17 by cportuon         ###   ########.fr        #
+#    Updated: 2022/10/17 12:25:14 by cportuon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = 
+SRC = ft_putchar.c ft_puthexa.c ft_putnbr.c ft_putstr.c ft_strlen.c ft_putnbru.c ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -26,7 +26,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 	@echo "Library comiled"
 
 $(OBJ): $(SRC)
